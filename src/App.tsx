@@ -1,7 +1,7 @@
-import { Redirect, Route } from 'react-router-dom';
+// import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -28,26 +28,58 @@ import '@ionic/react/css/display.css';
 
 /* import '@ionic/react/css/palettes/dark.always.css'; */
 /* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
+// import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
 
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonTabs, IonTabBar, IonTabButton, IonLabel } from '@ionic/react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import Group from './pages/Group';
+import UserProfile from './pages/UserProfile';
+import Expense from './pages/Expense';
+// import Group from './pages/Group';
+// import Expense from './pages/Expense';
+// import UserProfile from './pages/UserProfile';
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
+  <Router>
+    <IonPage>
+      {/* <IonHeader>
+        <IonToolbar>
+          <IonTitle>Splitwise Clone</IonTitle>
+        </IonToolbar>
+      </IonHeader> */}
+      <IonContent>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Switch>
+              <Route path="/home" component={Home} />
+              <Route path="/groups" component={Group} />
+              <Route path="/expenses" component={Expense} />
+              <Route path="/profile" component={UserProfile} />
+            </Switch>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="home" href="/home">
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="groups" href="/groups">
+              <IonLabel>Groups</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="expenses" href="/expenses">
+              <IonLabel>Expenses</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="profile" href="/profile">
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonContent>
+    </IonPage>
+  </Router>
 );
 
 export default App;

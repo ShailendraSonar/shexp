@@ -1,24 +1,25 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel } from '@ionic/react';
 
-const Home: React.FC = () => {
+const Group: React.FC = () => {
   const dummyGroups = [
-    { id: 1, name: 'Friends' },
-    { id: 2, name: 'Family' },
+    { id: 1, name: 'Friends', members: ['Alice', 'Bob'] },
+    { id: 2, name: 'Family', members: ['John', 'Jane'] },
   ];
 
   return (
     <IonPage>
-      {/* <IonHeader>
+      <IonHeader>
         <IonToolbar>
-          <IonTitle>Home</IonTitle>
+          <IonTitle>Groups</IonTitle>
         </IonToolbar>
-      </IonHeader> */}
+      </IonHeader>
       <IonContent>
         <IonList>
           {dummyGroups.map(group => (
             <IonItem key={group.id}>
               <IonLabel>{group.name}</IonLabel>
+              <p>Members: {group.members.join(', ')}</p>
             </IonItem>
           ))}
         </IonList>
@@ -27,4 +28,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Group;

@@ -39,6 +39,7 @@ import Home from './pages/Home';
 import Group from './pages/Group';
 import UserProfile from './pages/UserProfile';
 import Expense from './pages/Expense';
+import GroupForm from './pages/GroupForm';
 // import Group from './pages/Group';
 // import Expense from './pages/Expense';
 // import UserProfile from './pages/UserProfile';
@@ -56,8 +57,9 @@ const App: React.FC = () => (
         <IonTabs>
           <IonRouterOutlet>
             <Switch>
-              <Route path="/home" component={Home} />
-              <Route path="/groups" component={Group} />
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/groups" component={Group} />
+              <Route path="/create-group" component={GroupForm} />
               <Route path="/expenses" component={Expense} />
               <Route path="/profile" component={UserProfile} />
             </Switch>
@@ -68,6 +70,9 @@ const App: React.FC = () => (
             </IonTabButton>
             <IonTabButton tab="groups" href="/groups">
               <IonLabel>Groups</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="create-group" href="/create-group">
+              <IonLabel>Create Group</IonLabel>
             </IonTabButton>
             <IonTabButton tab="expenses" href="/expenses">
               <IonLabel>Expenses</IonLabel>

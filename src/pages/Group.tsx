@@ -1,11 +1,8 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel } from '@ionic/react';
-
+import { useSelector } from 'react-redux';
 const Group: React.FC = () => {
-  const dummyGroups = [
-    { id: 1, name: 'Friends', members: ['Alice', 'Bob'] },
-    { id: 2, name: 'Family', members: ['John', 'Jane'] },
-  ];
+    const groups = useSelector((state: any) => state.groups.groups);
 
   return (
     <IonPage>
@@ -16,10 +13,11 @@ const Group: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonList>
-          {dummyGroups.map(group => (
+          {groups.map((group: any) => (
             <IonItem key={group.id}>
-              <IonLabel>{group.name}</IonLabel>
-              <p>Members: {group.members.join(', ')}</p>
+              <IonLabel>
+                {group.name} - Members: {group.members.join(', ')}
+              </IonLabel>
             </IonItem>
           ))}
         </IonList>
